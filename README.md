@@ -9,43 +9,47 @@ This repository is a collection of my **Machine Learning** and **Deep Learning**
 
 ## 📂 Project Catalog (Proje Kataloğu)
 
-| 📌 Project Name | 📊 Data Type | 🧠 Algorithm / Model | 📈 Performance (Accuracy) | 📝 Description |
+| 📌 Project Name | 📊 Data Type | 🧠 Algorithm / Model | 📈 Performance | 📝 Description |
 | :--- | :--- | :--- | :---: | :--- |
-| **[Concrete Crack Detection](Concrete_Crack_Detection_CNN.ipynb)** | 🖼️ Image | **MobileNetV2 (Transfer Learning)** | **~99.04%** | Detected structural cracks in concrete surfaces using a pre-trained MobileNetV2 model. Achieved high accuracy on the validation set. |
-| **[Breast Cancer Classification](Breast_Cancer_Classification.ipynb)** | 🔢 Tabular | **Logistic Regression** | **~97.37%** | Classified tumors as Malignant (M) or Benign (B) using the Breast Cancer Wisconsin dataset. High precision and recall were observed. |
-| **[Diabetes Prediction](Diabetes_Prediction_KNN.ipynb)** | 🔢 Tabular | **KNN & Decision Tree** | **~79.22%** | Predicted diabetes onset based on health metrics like Glucose, BMI, and Age. Decision Tree outperformed Logistic Regression and KNN. |
-| **[Ceramic Crack Segmentation](Crack_Forest.ipynb)** | 🖼️ Image | **U-Net (MobileNetV2 Backbone)** | **~96.37%** | Performed semantic segmentation to identify cracks on ceramic surfaces. Used a U-Net architecture with a MobileNetV2 encoder. |
+| **[Concrete Crack Detection](concrete-cracks.ipynb)** | 🖼️ Image | **MobileNetV2 (Transfer Learning)** | **~99.04%** (Val) | Detected structural cracks in concrete surfaces for maintenance safety. |
+| **[Magnetic Tile Defect](tile-defect.ipynb)** | 🖼️ Image | **Custom CNN** | **~91.28%** (Val) | Classified 5 different types of manufacturing defects (Blowhole, Break, Crack, etc.) in magnetic tiles. |
+| **[Ceramic Crack Segmentation](crackforest.ipynb)** | 🖼️ Image | **U-Net (MobileNetV2 Backbone)** | **~96.37%** (Train) | Performed semantic segmentation to identify the exact pixel location of cracks on ceramic surfaces. |
+| **[Breast Cancer Classification](breast_cancer_dataset.ipynb)** | 🔢 Tabular | **Logistic Regression** | **~97.37%** (Test) | Classified tumors as Malignant (M) or Benign (B) using the Breast Cancer Wisconsin dataset. |
+| **[Diabetes Prediction](diabets_dataset_training_with_KNN,_Logistic_Regression_and_Decision_Tree_models.ipynb)** | 🔢 Tabular | **KNN & Decision Tree** | **~79.22%** (Test) | Predicted diabetes onset based on health metrics. Decision Tree provided the best balance between accuracy and interpretability. |
 
 ---
 
 ## 🔍 Project Details (Proje Detayları)
 
 ### 1. 🧱 Concrete Crack Detection (Beton Çatlak Tespiti)
-* **Goal:** To automate the detection of cracks in concrete structures for maintenance safety.
-* **Dataset:** Concrete Crack Images for Classification (40,000 images).
-* **Model:** **MobileNetV2** (Pre-trained on ImageNet) with custom classification head.
-* **Result:** The model achieved **99.04% validation accuracy**, proving highly effective for structural health monitoring.
+* **Goal:** To automate the detection of cracks in concrete structures.
+* **Dataset:** Concrete Crack Images (Positive/Negative).
+* **Model:** **MobileNetV2** (Pre-trained) with a custom classification head.
+* **Key Insight:** Transfer learning significantly reduced training time while achieving near-perfect accuracy on the validation set.
 
-### 2. 🎗️ Breast Cancer Classification (Meme Kanseri Teşhisi)
-* **Goal:** To assist medical diagnosis by classifying breast mass features.
-* **Dataset:** Breast Cancer Wisconsin (Diagnostic) Data Set.
-* **Model:** **Logistic Regression**.
-* **Result:** Achieved **97.37% accuracy**. The model successfully distinguished between malignant and benign tumors with very few false negatives.
+### 2. 🧲 Magnetic Tile Defect Classification (Manyetik Fayans Hata Tespiti)
+* **Goal:** To classify manufacturing defects in magnetic tiles into 5 categories (Blowhole, Break, Crack, Fray, Free).
+* **Dataset:** Magnetic Tile Defect Dataset.
+* **Model:** **Custom CNN Architecture** (3 Conv2D layers + MaxPooling + Dense).
+* **Result:** The model successfully generalized to unseen data with **~91% validation accuracy**, proving effective for industrial quality control.
 
-### 3. 🍬 Diabetes Prediction (Diyabet Tahmini)
-* **Goal:** To predict whether a patient has diabetes based on diagnostic measures.
-* **Dataset:** Pima Indians Diabetes Database.
-* **Models Compared:**
-    * Logistic Regression: ~72%
-    * K-Nearest Neighbors (KNN): ~75%
-    * **Decision Tree (Winner): ~79.22%**
-* **Result:** Decision Tree provided the best balance between accuracy and interpretability for this tabular dataset.
-
-### 4. 🏺 Ceramic Crack Segmentation (Seramik Çatlak Segmentasyonu)
-* **Goal:** To identify the exact pixel location of cracks on ceramic tiles (Semantic Segmentation).
+### 3. 🏺 Ceramic Crack Segmentation (Seramik Çatlak Segmentasyonu)
+* **Goal:** To pinpoint the exact location of cracks on ceramic tiles (Pixel-level Classification).
 * **Dataset:** Ceramic Cracks Dataset.
-* **Model:** **U-Net Architecture** with MobileNetV2 as the encoder backbone.
-* **Result:** The model reached **96.37% training accuracy**, effectively segmenting fine crack lines from the background.
+* **Model:** **U-Net** architecture using **MobileNetV2** as the encoder (backbone).
+* **Result:** Achieved **96.37% training accuracy**, effectively separating fine crack lines from the background texture.
+
+### 4. 🎗️ Breast Cancer Classification (Meme Kanseri Teşhisi)
+* **Goal:** To assist medical diagnosis by classifying breast mass features.
+* **Dataset:** Breast Cancer Wisconsin (Diagnostic).
+* **Model:** **Logistic Regression**.
+* **Result:** Achieved **97.37% accuracy**. The model distinguished between malignant and benign tumors with high precision.
+
+### 5. 🍬 Diabetes Prediction (Diyabet Tahmini)
+* **Goal:** To predict diabetes probability based on diagnostic measures (Glucose, BMI, Age, etc.).
+* **Dataset:** Pima Indians Diabetes Database.
+* **Models Compared:** Logistic Regression (~72%), KNN (~75%), **Decision Tree (~79%)**.
+* **Result:** Decision Tree outperformed others, capturing non-linear relationships in patient data.
 
 ---
 
@@ -53,7 +57,7 @@ This repository is a collection of my **Machine Learning** and **Deep Learning**
 * **Languages:** Python
 * **Deep Learning:** TensorFlow, Keras
 * **Machine Learning:** Scikit-Learn
-* **Data Manipulation:** Pandas, NumPy
+* **Data Processing:** Pandas, NumPy, PIL
 * **Visualization:** Matplotlib, Seaborn
 
 ## 📫 Contact
